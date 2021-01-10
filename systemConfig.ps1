@@ -2,12 +2,17 @@ Function Ultimate-Power-Plan
 {
 powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61
 Try {
-        $UltimatePerf = powercfg -l | %{if($_.contains("Ultimate performance")) {$_.split()[3]}}
+        $UltimPerf = powercfg -l | %{if($_.contains("Ultimate")) {$_.split()[3]}}
         $CurrPlan = $(powercfg -getactivescheme).split()[3]
-        if ($CurrPlan -ne $UltimatePerf) {powercfg -setactive $UltimatePerf}
-    } Catch {
-        Write-Warning -Message "Unable to set power plan to high performance"
+        if ($CurrPlan -ne $UltimPerf) {powercfg -setactive $UltimPerf}
+    } 
+
+Catch {
+        Write-Warning -Message "Unable to set power plan to balance performance"
     }
+powercfg -change -monitor-timeout-ac 0
+powercfg -change -standby-timeout-ac 0
+powercfg -change -hibernate-timeout-ac 0
 }
 
 Function Disable-NetProxy
