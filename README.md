@@ -41,3 +41,11 @@ Script for automation of installation of the apps below
 
 **Command:**
 `choco install googlechrome brave firefox discord whatsapp telegram 7zip adobereader silverlight dotnetfx google-backup-and-sync vlc spotify notepadplusplus git vscode python nodejs fluent-terminal --yes`
+
+### GPO and Windows settings
+Script to automate the GPO changes and windows settings listed below:
+- Disable Proxy
+- Disable Cortana
+- Hide search bar
+- Disable Update delivery optimization
+- Add and set the ultimate performance power profile
