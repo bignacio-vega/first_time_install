@@ -113,6 +113,12 @@ Set-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies
 Set-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\System" -Name "PromptOnSecureDesktop" -Type DWord -Value 0
 }
 
+Function Hide-Desktop-Icons
+{
+$Path="HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
+Set-ItemProperty -Path $Path -Name "HideIcons" -Value 1
+}
+
 Function Reboot
 {
 Write-Host
@@ -133,4 +139,5 @@ Disable-Sticky-Keys
 Remove-Default-Microsoft-Applications
 Set-Photo-Viewer-as-Default
 Lower-UAC-level
+Hide-Desktop-Icons
 Reboot
