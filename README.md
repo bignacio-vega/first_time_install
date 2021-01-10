@@ -30,6 +30,7 @@ Script for automation of installation of the apps below
 ### Media Players
 - VLC Player
 - Spotify
+- Twitch
 
 ### Dev Tools
 - Notepad ++
@@ -39,8 +40,11 @@ Script for automation of installation of the apps below
 - NodeJS
 - Fluent Terminal
 
+### Break Reminder
+- Stretchly
+
 **Command:**
-`choco install googlechrome brave firefox discord whatsapp telegram 7zip adobereader silverlight dotnetfx google-backup-and-sync vlc spotify notepadplusplus git vscode python nodejs fluent-terminal --yes`
+`choco install googlechrome brave firefox discord whatsapp twitch telegram 7zip adobereader silverlight dotnetfx google-backup-and-sync vlc spotify notepadplusplus git vscode python nodejs fluent-terminal stretchly --yes`
 
 ### GPO and Windows settings
 Script to automate the GPO changes and windows settings listed below:
@@ -49,8 +53,28 @@ Script to automate the GPO changes and windows settings listed below:
 - Hide search bar
 - Disable Update delivery optimization
 - Add and set the ultimate performance power profile
+- Hide Desktop Icons
 - Disable UAC
 
 **Command:**
 `$URI = "https://raw.githubusercontent.com/bignacio-vega/first_time_install/main/systemConfig.ps1"
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString($URI))`
+
+### Windows Store Apps
+Install the Apps listed below from the Windows Store
+- Notepads
+- TransculentTB
+- Microsoft Remote Desktop
+
+### Install the Ubuntu Subsystem
+Script to Install the Ubuntu Subsystem for Linux
+**Command:**
+`dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi'))
+
+wsl --set-default-version 2`
+
+
